@@ -1,7 +1,7 @@
 harvest-helper
 ==============
 
-A Javascript file which adds colours and arrow key navigation to the harvestapp.com time sheet web application
+A Javascript file which adds colours and arrow key navigation to the time entry page in the harvestapp.com time sheet web application.
 
 
 ## Installation
