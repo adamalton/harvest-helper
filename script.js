@@ -13,8 +13,8 @@
     //************************************************ COLOURS ******************************************************
     //***************************************************************************************************************
 
-    var colours = ['FFFFAA', 'FFAAFF', 'AAFFFF', 'FFAAAA', 'AAFFAA', 'AAAAFF'];
-    var $rows = $("tr.week-view-entry");
+    var colours = ['FFFFDD', 'FFDDFF', 'DDFFFF', 'FFDDDD', 'DDFFDD', 'DDDDFF'];
+    var $rows = $("tr.wDDk-view-entry");
     var prefixes = [];
     for(var i=0; i<$rows.length; i++){
         var $row = $rows.eq(i);
