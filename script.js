@@ -14,7 +14,7 @@
     //***************************************************************************************************************
 
     var colours = ['FFFFDD', 'FFDDFF', 'DDFFFF', 'FFDDDD', 'DDFFDD', 'DDDDFF'];
-    var $rows = $("tr.wDDk-view-entry");
+    var $rows = $("tr.week-view-entry");
     var prefixes = [];
     for(var i=0; i<$rows.length; i++){
         var $row = $rows.eq(i);
