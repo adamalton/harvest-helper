@@ -21,7 +21,7 @@
             var project = $row.find(".project").text();
             var bracketed_name = project.match(/\[.+\]/);
             var prefix = bracketed_name || project;
-            prefix = prefix.length ? prefix[0] : null;
+            prefix = (typeof prefix === "object") ? prefix[0] : prefix; // if it's an array (from regex) take first item
             if(prefix){
                 var position = prefixes.indexOf(prefix);
                 if(position == -1){
