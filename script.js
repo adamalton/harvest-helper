@@ -12,31 +12,36 @@
     //***************************************************************************************************************
     //************************************************ COLOURS ******************************************************
     //***************************************************************************************************************
-
-    var colours = ['FFFFDD', 'FFDDFF', 'DDFFFF', 'FFDDDD', 'DDFFDD', 'DDDDFF'];
-    var $rows = $("tr.week-view-entry");
-    var prefixes = [];
-    for(var i=0; i<$rows.length; i++){
-        var $row = $rows.eq(i);
-        var project = $row.find(".project").text();
-        var bracketed_name = project.match(/\[.+\]/);
-        var prefix = bracketed_name || project;
-        prefix = prefix.length ? prefix[0] : null;
-        if(prefix){
-            var position = prefixes.indexOf(prefix);
-            if(position == -1){
-                position = prefixes.length; //the 1-indexing of length gives us the position that it will be in
-                prefixes.push(prefix);
+    var setColours = function(){
+        var colours = ['FFFFDD', 'FFDDFF', 'DDFFFF', 'FFDDDD', 'DDFFDD', 'DDDDFF'];
+        var $rows = $("tr.week-view-entry");
+        var prefixes = [];
+        for(var i=0; i<$rows.length; i++){
+            var $row = $rows.eq(i);
+            var project = $row.find(".project").text();
+            var bracketed_name = project.match(/\[.+\]/);
+            var prefix = bracketed_name || project;
+            prefix = prefix.length ? prefix[0] : null;
+            if(prefix){
+                var position = prefixes.indexOf(prefix);
+                if(position == -1){
+                    position = prefixes.length; //the 1-indexing of length gives us the position that it will be in
+                    prefixes.push(prefix);
+                }
+                var colour = colours[position];
+                while(colour === undefined){
+                    //if we got to the end of our list of colours then loop around
+                    position -= colours.length;
+                    colour = colours[position];
+                }
+                $row.css('background-color', '#' + colour);
             }
-            var colour = colours[position];
-            while(colour === undefined){
-                //if we got to the end of our list of colours then loop around
-                position -= colours.length;
-                colour = colours[position];
-            }
-            $row.css('background-color', '#' + colour);
         }
-    }
+    };
+    setColours();
+    // Make sure that the colours are set when new rows are added and/or the week is changed
+    // this is dirty, but it's easier than trying to detect all of the possible events that change things
+    setInterval(setColours, 1000);
 })();
 
 
