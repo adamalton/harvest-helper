@@ -51,7 +51,7 @@
     //***************************************************************************************************************
     //****************************************** KEYBOARD NAVIGATION ************************************************
     //***************************************************************************************************************
-	var UP = 38, DOWN = 40, RIGHT = 39, LEFT = 37;
+    var UP = 38, DOWN = 40, RIGHT = 39, LEFT = 37;
     var keypress = function(e){
         if([UP, DOWN].indexOf(e.keyCode) != -1){
             var $this = $(this);
@@ -70,4 +70,15 @@
     };
     $(document).on("keydown", "input.js-compound-entry", keypress);
 
+})();
+
+
+(function(){
+    //***************************************************************************************************************
+    //***************************************** DUPLICATE THE BUTTONS ***********************************************
+    //***************************************************************************************************************
+    // The 'save' button doesn't work if we duplicate it (well, it might do with enough tinkering)
+    var $bottom_td = $("table.week-view-table tfoot td.name");
+    var $top_td = $("table.week-view-table thead td.name");
+    $bottom_td.children(".button-new-row").clone().appendTo($top_td);
 })();
