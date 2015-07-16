@@ -82,18 +82,23 @@
     //***************************************************************************************************************
     var UP = 38, DOWN = 40, RIGHT = 39, LEFT = 37;
     var keypress = function(e){
+        var isNavEvent = false;
         if([UP, DOWN].indexOf(e.keyCode) != -1){
             var $this = $(this);
             var col_num = $this.closest("td").index(); //Note this includes the column of project names
             var $row = $this.closest("tr");
             var $new_row = e.keyCode == UP ? $row.prev() : $row.next();
             $new_row.find("td").eq(col_num).find("input.js-compound-entry").focus();
-            return false;
+            isNavEvent = true;
         }else if(e.keyCode == RIGHT){
             $(this).closest("td").next().find("input.js-compound-entry").focus();
-            return false;
+            isNavEvent = true;
         }else if (e.keyCode == LEFT){
             $(this).closest("td").prev().find("input.js-compound-entry").focus();
+            isNavEvent = true;
+        }
+        if(isNavEvent){
+            $(".test-week-view-save").click(); // save the form
             return false;
         }
     };
